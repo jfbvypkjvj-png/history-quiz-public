@@ -130,7 +130,7 @@ function render(){
   const q=session[pos];currentAnswered=false;$("card").classList.remove("flipped");$("actions").classList.add("hidden");
   $("num").textContent=`${pos+1} / ${session.length}`;$("scoreMini").textContent=`${known.length}できた / ${weak.length}間違えた`;
   $("bar").style.width=`${(pos/session.length)*100}%`;$("periodLabel").textContent=reviewMode?"間違えた問題の復習":periodName(q.period);
-  $("question").textContent=q.q;$("answer").textContent=q.choices[q.a];$("exp").textContent=q.exp||"解説なし";
+  $("question").textContent=q.q.replaceAll("最も適切な内容はどれ？","どのような内容？").replaceAll("最も適切なのは？","どのようなこと？");
   $("correct").disabled=false;$("wrong").disabled=false;$("correct").style.opacity="1";$("wrong").style.opacity="1";
 }
 $("card").addEventListener("click",()=>{if(currentAnswered)return;$("card").classList.toggle("flipped");if($("card").classList.contains("flipped"))$("actions").classList.remove("hidden");});
